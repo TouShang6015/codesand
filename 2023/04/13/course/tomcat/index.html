@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/assert/img/icon/logo.png">
-  <link rel="icon" href="/assert/img/icon/logo.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/codesand/assert/img/icon/logo.png">
+  <link rel="icon" href="/codesand/assert/img/icon/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,18 +19,18 @@
     <meta name="description" content="idea ssm&#x2F;ssh项目配置Tomcat1、准备工作 你的项目 tomcat压缩包    tomcat下载地址（8.0-9.0版本）：👉点我下载提取码：9lYa 如果本地开发，不需要配置tomcat环境变量 2、确保你的项目需要配置tomcat如 springboot项目不需要配置tomcat，ssm&#x2F;ssh&#x2F;servlet项目需要手动配置tomcat 3、开始">
 <meta property="og:type" content="article">
 <meta property="og:title" content="idea ssm&#x2F;ssh项目配置Tomcat（极其详细）">
-<meta property="og:url" content="https://toushang6015.github.io/codesand/2023/04/13/course/tomcat/index.html">
+<meta property="og:url" content="https://www.codesand.fun/2023/04/13/course/tomcat/index.html">
 <meta property="og:site_name" content="Code Sand 小站">
 <meta property="og:description" content="idea ssm&#x2F;ssh项目配置Tomcat1、准备工作 你的项目 tomcat压缩包    tomcat下载地址（8.0-9.0版本）：👉点我下载提取码：9lYa 如果本地开发，不需要配置tomcat环境变量 2、确保你的项目需要配置tomcat如 springboot项目不需要配置tomcat，ssm&#x2F;ssh&#x2F;servlet项目需要手动配置tomcat 3、开始">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://toushang6015.github.io/assert/img/headbackground/tomcat.jpeg">
+<meta property="og:image" content="https://www.codesand.fun/codesand/assert/img/headbackground/tomcat.jpeg">
 <meta property="article:published_time" content="2023-04-13T00:48:39.000Z">
 <meta property="article:modified_time" content="2023-04-21T07:44:36.235Z">
 <meta property="article:author" content="吴昊">
-<meta property="article:tag" content="运行教程">
 <meta property="article:tag" content="springBoot">
+<meta property="article:tag" content="运行教程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://toushang6015.github.io/assert/img/headbackground/tomcat.jpeg">
+<meta name="twitter:image" content="https://www.codesand.fun/codesand/assert/img/headbackground/tomcat.jpeg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -60,12 +60,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="/codesand/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/codesand/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/codesand/css/highlight-dark.css" />
   
 
 
@@ -74,15 +74,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"toushang6015.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":["home"]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.codesand.fun","root":"/codesand/","version":"1.9.4","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":["home"]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/codesand/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="/codesand/js/utils.js" ></script>
+  <script  src="/codesand/js/color-schema.js" ></script>
   
 
   
@@ -114,7 +114,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/codesand/">
       <strong>Code丶Sand</strong>
     </a>
 
@@ -133,7 +133,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/codesand/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -145,7 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/codesand/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -157,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/codesand/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -169,7 +169,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/codesand/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -181,7 +181,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/">
+              <a class="nav-link" href="/codesand/links/">
                 <i class="iconfont icon-link-fill"></i>
                 <span>友链</span>
               </a>
@@ -211,7 +211,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/assert/img/headbackground/tomcat.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/codesand/assert/img/headbackground/tomcat.jpeg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -306,39 +306,39 @@
 <h3 id="3、开始配置"><a href="#3、开始配置" class="headerlink" title="3、开始配置"></a>3、开始配置</h3><blockquote>
 <p>这里拿ssm项目为例子</p>
 </blockquote>
-<h4 id="1）解压tomcat包至某一个目录下"><a href="#1）解压tomcat包至某一个目录下" class="headerlink" title="1）解压tomcat包至某一个目录下"></a>1）解压tomcat包至某一个目录下</h4><p><img src="https://static.equinox19.xyz/articles/89433c0d1a20f5294d75bb21a9bea4ec.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/2cd22f39736d6c87b7a61fa703272824.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<h4 id="2）idea配置tomcat"><a href="#2）idea配置tomcat" class="headerlink" title="2）idea配置tomcat"></a>2）idea配置tomcat</h4><p><img src="https://static.equinox19.xyz/articles/8ca962a46a2899f3c5413360925f7345.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<h4 id="1）解压tomcat包至某一个目录下"><a href="#1）解压tomcat包至某一个目录下" class="headerlink" title="1）解压tomcat包至某一个目录下"></a>1）解压tomcat包至某一个目录下</h4><p><img src="https://static.equinox19.xyz/articles/89433c0d1a20f5294d75bb21a9bea4ec.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/2cd22f39736d6c87b7a61fa703272824.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<h4 id="2）idea配置tomcat"><a href="#2）idea配置tomcat" class="headerlink" title="2）idea配置tomcat"></a>2）idea配置tomcat</h4><p><img src="https://static.equinox19.xyz/articles/8ca962a46a2899f3c5413360925f7345.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
 <p><code>部分idea版本不同，看到绿色锤子旁边那个就是的，点击这个添加配置</code></p>
-<p><img src="https://static.equinox19.xyz/articles/139d0335067d6df7cea48857b133e4bf.png" srcset="/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/68179478cbc04af89162073363364813.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/139d0335067d6df7cea48857b133e4bf.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/68179478cbc04af89162073363364813.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
 <p><strong>注意idea为社区版的是没有这个选项的，详情请查看<a target="_blank" rel="noopener" href="https://www.equinox19.xyz/siteresource/68">《idea破解》</a></strong></p>
-<p><img src="https://static.equinox19.xyz/articles/a8cf54e8ceef16550cf50614c615dbd2.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/1cda7f04508c02df95124a987bdfe8c8.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/42e5d99194bafaf49c31f6fe7c3ede37.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/a05ff43815a04af2ef032b927a7198b4.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/d040a5aee5b99c3fa949864f9dc1449c.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<h4 id="3）加载项目至tomcat容器"><a href="#3）加载项目至tomcat容器" class="headerlink" title="3）加载项目至tomcat容器"></a>3）加载项目至tomcat容器</h4><p><img src="https://static.equinox19.xyz/articles/494b99e0aa82287f6d74b56b48a82ae9.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/a8aa618aae9e7fe8bbf2812943c1643e.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/c9954edb5dd39aa39d24fbf1094df420.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/41777c385c0387849d4c5992fbb49a9e.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/a5579df749e87e22daa2588eaed30a5a.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/6226b7770b26500c80e33920f6aef93e.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/a8cf54e8ceef16550cf50614c615dbd2.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/1cda7f04508c02df95124a987bdfe8c8.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/42e5d99194bafaf49c31f6fe7c3ede37.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/a05ff43815a04af2ef032b927a7198b4.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/d040a5aee5b99c3fa949864f9dc1449c.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<h4 id="3）加载项目至tomcat容器"><a href="#3）加载项目至tomcat容器" class="headerlink" title="3）加载项目至tomcat容器"></a>3）加载项目至tomcat容器</h4><p><img src="https://static.equinox19.xyz/articles/494b99e0aa82287f6d74b56b48a82ae9.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/a8aa618aae9e7fe8bbf2812943c1643e.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/c9954edb5dd39aa39d24fbf1094df420.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/41777c385c0387849d4c5992fbb49a9e.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/a5579df749e87e22daa2588eaed30a5a.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/6226b7770b26500c80e33920f6aef93e.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
 <p><code>点击应用确定，完成项目配置</code></p>
-<p><img src="https://static.equinox19.xyz/articles/739b50ed2f776b801eb5c3ffe0a09729.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/739b50ed2f776b801eb5c3ffe0a09729.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
 <h2 id="疑难解答"><a href="#疑难解答" class="headerlink" title="疑难解答"></a>疑难解答</h2><h3 id="1、项目没有配置好，tomcat找不到项目？"><a href="#1、项目没有配置好，tomcat找不到项目？" class="headerlink" title="1、项目没有配置好，tomcat找不到项目？"></a>1、项目没有配置好，tomcat找不到项目？</h3><p>1）先确定包结构是否正确，以ssm项目为例</p>
 <p><strong>首先如果是maven项目，一定要先配置好maven，会省很多事</strong></p>
-<p><img src="https://static.equinox19.xyz/articles/fe4a56907af6c1bdcc2d2ed11047204c.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/024251aa0e324f51802b8d8e8a950334.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><strong>注意：如果resource没有那个黄色的标识，右键标记为资源目录</strong><br><img src="https://static.equinox19.xyz/articles/1e8984943f6748004fbe1c8e117567d9.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/fe4a56907af6c1bdcc2d2ed11047204c.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/024251aa0e324f51802b8d8e8a950334.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><strong>注意：如果resource没有那个黄色的标识，右键标记为资源目录</strong><br><img src="https://static.equinox19.xyz/articles/1e8984943f6748004fbe1c8e117567d9.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
 <p>2） F4 打开项目设置</p>
-<p><img src="https://static.equinox19.xyz/articles/624d6b37a8bdafb3ad2954877c5f053d.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/624d6b37a8bdafb3ad2954877c5f053d.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
 <p>确保该目录下有以下配置</p>
-<p><strong>如果没有的话完成以下步骤</strong><br><img src="https://static.equinox19.xyz/articles/48e140041c139f414ca83d630cc58342.png" srcset="/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/67b1d64cc8cb5b2249ec38c1dc1dace2.png" srcset="/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/86efa68561eb83db02370c041e856888.png" srcset="/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/810dc233883d9c43fa4ea35aa902284e.png" srcset="/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/a45fb270de7c7fa7880015ac87bbc693.png" srcset="/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/b5135545de2aad060b9c2da1d96027ac.png" srcset="/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/436816859575bd9a46234735546ff696.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p><strong>如果没有的话完成以下步骤</strong><br><img src="https://static.equinox19.xyz/articles/48e140041c139f414ca83d630cc58342.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/67b1d64cc8cb5b2249ec38c1dc1dace2.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/86efa68561eb83db02370c041e856888.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/810dc233883d9c43fa4ea35aa902284e.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/a45fb270de7c7fa7880015ac87bbc693.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/b5135545de2aad060b9c2da1d96027ac.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/436816859575bd9a46234735546ff696.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
 <blockquote>
 <p>一般web目录命名为 webapp  web等，不同项目不一样</p>
 </blockquote>
-<p><img src="https://static.equinox19.xyz/articles/01a4c179111c663d579cc43ac3eb590c.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/efec34d18a6f33001482a61e5aa1079c.png" srcset="/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/e76ae4a7ecdfab84fdfac4036ea0c0cc.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/01a4c179111c663d579cc43ac3eb590c.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/efec34d18a6f33001482a61e5aa1079c.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"><br><img src="https://static.equinox19.xyz/articles/e76ae4a7ecdfab84fdfac4036ea0c0cc.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
 <p>最后点击应用保存，项目设置完成</p>
 
                 
@@ -358,7 +358,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B/" class="category-chain-item">运行教程</a>
+  <a href="/codesand/categories/%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B/" class="category-chain-item">运行教程</a>
   
   
 
@@ -373,9 +373,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B/">#运行教程</a>
+        <a href="/codesand/tags/springBoot/">#springBoot</a>
       
-        <a href="/tags/springBoot/">#springBoot</a>
+        <a href="/codesand/tags/%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B/">#运行教程</a>
       
     </div>
   
@@ -388,7 +388,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>idea ssm/ssh项目配置Tomcat（极其详细）</div>
-      <div>https://toushang6015.github.io/codesand/2023/04/13/course/tomcat/</div>
+      <div>https://www.codesand.fun/2023/04/13/course/tomcat/</div>
     </div>
     <div class="license-meta">
       
@@ -438,7 +438,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/21/course/CompletableFuture%E8%B6%85%E6%97%B6%E5%A4%84%E7%90%86%20%E9%85%8D%E7%BD%AE%E7%BA%BF%E7%A8%8B%E6%B1%A0/" title="CompletableFuture超时处理 配置线程池">
+                      <a href="/codesand/2023/04/21/course/CompletableFuture%E8%B6%85%E6%97%B6%E5%A4%84%E7%90%86%20%E9%85%8D%E7%BD%AE%E7%BA%BF%E7%A8%8B%E6%B1%A0/" title="CompletableFuture超时处理 配置线程池">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">CompletableFuture超时处理 配置线程池</span>
                         <span class="visible-mobile">上一篇</span>
@@ -448,7 +448,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/04/12/course/maven/" title="Maven环境搭建（idea）">
+                      <a href="/codesand/2023/04/12/course/maven/" title="Maven环境搭建（idea）">
                         <span class="hidden-mobile">Maven环境搭建（idea）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -602,15 +602,15 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="/codesand/js/events.js" ></script>
+<script  src="/codesand/js/plugins.js" ></script>
 
 
 
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="/codesand/js/img-lazyload.js" ></script>
   
 
 
@@ -709,7 +709,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="/codesand/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -719,7 +719,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="/codesand/js/boot.js" ></script>
 
 
   

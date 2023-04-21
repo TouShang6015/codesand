@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/assert/img/icon/logo.png">
-  <link rel="icon" href="/assert/img/icon/logo.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/codesand/assert/img/icon/logo.png">
+  <link rel="icon" href="/codesand/assert/img/icon/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,18 +19,18 @@
     <meta name="description" content="Maven环境搭建（idea）下载地址我用的是maven3.5版本的，已配置好可直接使用，下载地址👇 maven安装包提取码：f6qz  环境搭建1、解压maven压缩包解压到本地电脑中任意磁盘（不要放在C盘）   2、创建maven本地仓库的存储路径创建一个文件夹，命名为 mavenRespository，用于存放本地jar。  3、修改setting.xml配置文件 👇以下是setting">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maven环境搭建（idea）">
-<meta property="og:url" content="https://toushang6015.github.io/codesand/2023/04/12/course/maven/index.html">
+<meta property="og:url" content="https://www.codesand.fun/2023/04/12/course/maven/index.html">
 <meta property="og:site_name" content="Code Sand 小站">
 <meta property="og:description" content="Maven环境搭建（idea）下载地址我用的是maven3.5版本的，已配置好可直接使用，下载地址👇 maven安装包提取码：f6qz  环境搭建1、解压maven压缩包解压到本地电脑中任意磁盘（不要放在C盘）   2、创建maven本地仓库的存储路径创建一个文件夹，命名为 mavenRespository，用于存放本地jar。  3、修改setting.xml配置文件 👇以下是setting">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://toushang6015.github.io/assert/img/headbackground/maven.jpeg">
+<meta property="og:image" content="https://www.codesand.fun/codesand/assert/img/headbackground/maven.jpeg">
 <meta property="article:published_time" content="2023-04-12T09:09:25.000Z">
 <meta property="article:modified_time" content="2023-04-21T07:44:54.857Z">
 <meta property="article:author" content="吴昊">
-<meta property="article:tag" content="运行教程">
 <meta property="article:tag" content="springBoot">
+<meta property="article:tag" content="运行教程">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://toushang6015.github.io/assert/img/headbackground/maven.jpeg">
+<meta name="twitter:image" content="https://www.codesand.fun/codesand/assert/img/headbackground/maven.jpeg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -60,12 +60,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="/codesand/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/codesand/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/codesand/css/highlight-dark.css" />
   
 
 
@@ -74,15 +74,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"toushang6015.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":["home"]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.codesand.fun","root":"/codesand/","version":"1.9.4","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":["home"]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/codesand/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="/codesand/js/utils.js" ></script>
+  <script  src="/codesand/js/color-schema.js" ></script>
   
 
   
@@ -114,7 +114,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/codesand/">
       <strong>Code丶Sand</strong>
     </a>
 
@@ -133,7 +133,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/codesand/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -145,7 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/codesand/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -157,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/codesand/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -169,7 +169,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/codesand/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -181,7 +181,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/links/">
+              <a class="nav-link" href="/codesand/links/">
                 <i class="iconfont icon-link-fill"></i>
                 <span>友链</span>
               </a>
@@ -211,7 +211,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/assert/img/headbackground/maven.jpeg') no-repeat center center; background-size: cover;">
+     style="background: url('/codesand/assert/img/headbackground/maven.jpeg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -297,11 +297,11 @@
                 <h1 id="Maven环境搭建（idea）"><a href="#Maven环境搭建（idea）" class="headerlink" title="Maven环境搭建（idea）"></a>Maven环境搭建（idea）</h1><h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p>我用的是maven3.5版本的，已配置好可直接使用，下载地址👇</p>
 <p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1m8qjck2COEyNr_04LN7Q4w">maven安装包</a><br>提取码：f6qz </p>
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="1、解压maven压缩包"><a href="#1、解压maven压缩包" class="headerlink" title="1、解压maven压缩包"></a>1、解压maven压缩包</h3><p>解压到本地电脑中任意磁盘（不要放在C盘）</p>
-<p><img src="https://static.equinox19.xyz/articles/a271ceeafe3faf7a84db14b3118c31a2.jpg" srcset="/img/loading.gif" lazyload alt="1663399675605.jpg"></p>
-<p><img src="https://static.equinox19.xyz/articles/64d450b313b2d5b98ec9ca4dd52e5d30.jpg" srcset="/img/loading.gif" lazyload alt="1663399839224.jpg"></p>
+<p><img src="https://static.equinox19.xyz/articles/a271ceeafe3faf7a84db14b3118c31a2.jpg" srcset="/codesand/img/loading.gif" lazyload alt="1663399675605.jpg"></p>
+<p><img src="https://static.equinox19.xyz/articles/64d450b313b2d5b98ec9ca4dd52e5d30.jpg" srcset="/codesand/img/loading.gif" lazyload alt="1663399839224.jpg"></p>
 <h3 id="2、创建maven本地仓库的存储路径"><a href="#2、创建maven本地仓库的存储路径" class="headerlink" title="2、创建maven本地仓库的存储路径"></a>2、创建maven本地仓库的存储路径</h3><p>创建一个文件夹，命名为 mavenRespository，用于存放本地jar。</p>
-<p><img src="https://static.equinox19.xyz/articles/368817ed297a702bb0695779135afc45.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<h3 id="3、修改setting-xml配置文件"><a href="#3、修改setting-xml配置文件" class="headerlink" title="3、修改setting.xml配置文件"></a>3、修改setting.xml配置文件</h3><p><img src="https://static.equinox19.xyz/articles/54a9ca77db5c66e3bfb92e3a6fe1dbb2.jpg" srcset="/img/loading.gif" lazyload alt="1663399990456.jpg"></p>
+<p><img src="https://static.equinox19.xyz/articles/368817ed297a702bb0695779135afc45.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<h3 id="3、修改setting-xml配置文件"><a href="#3、修改setting-xml配置文件" class="headerlink" title="3、修改setting.xml配置文件"></a>3、修改setting.xml配置文件</h3><p><img src="https://static.equinox19.xyz/articles/54a9ca77db5c66e3bfb92e3a6fe1dbb2.jpg" srcset="/codesand/img/loading.gif" lazyload alt="1663399990456.jpg"></p>
 <p>👇以下是setting文件内容，</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs xml"><br><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">settings</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span></span><br><span class="hljs-tag">          <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">          <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span><br><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">localRepository</span>&gt;</span>你的maven仓库地址<span class="hljs-tag">&lt;/<span class="hljs-name">localRepository</span>&gt;</span><br><br>  <span class="hljs-tag">&lt;<span class="hljs-name">mirrors</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span><br>　　　　　<span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>nexus-aliyun<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>　　　　　<span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>central<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span><br>　　　　　<span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Nexus aliyun<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>　　　　　<span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br>　　<span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">mirrors</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">settings</span>&gt;</span><br><br></code></pre></td></tr></table></figure>
 
@@ -312,13 +312,13 @@
 
 <p>最后保存文件，maven配置完成</p>
 <h2 id="idea中配置maven"><a href="#idea中配置maven" class="headerlink" title="idea中配置maven"></a>idea中配置maven</h2><p>maven环境配置完成后，现在需要在idea中配置maven</p>
-<h3 id="1、打开idea的设置"><a href="#1、打开idea的设置" class="headerlink" title="1、打开idea的设置"></a>1、打开idea的设置</h3><p><img src="https://static.equinox19.xyz/articles/756134d89890d8cfc555db4ac6ca8a0c.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<h3 id="2、搜索maven"><a href="#2、搜索maven" class="headerlink" title="2、搜索maven"></a>2、搜索maven</h3><p><img src="https://static.equinox19.xyz/articles/3416adf2117adb506d863afd97ab5b16.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<h3 id="1、打开idea的设置"><a href="#1、打开idea的设置" class="headerlink" title="1、打开idea的设置"></a>1、打开idea的设置</h3><p><img src="https://static.equinox19.xyz/articles/756134d89890d8cfc555db4ac6ca8a0c.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<h3 id="2、搜索maven"><a href="#2、搜索maven" class="headerlink" title="2、搜索maven"></a>2、搜索maven</h3><p><img src="https://static.equinox19.xyz/articles/3416adf2117adb506d863afd97ab5b16.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
 <h3 id="3、修改maven主目录"><a href="#3、修改maven主目录" class="headerlink" title="3、修改maven主目录"></a>3、修改maven主目录</h3><p><strong>只需要修改下图中的maven主目录即可</strong></p>
-<p><img src="https://static.equinox19.xyz/articles/fcfbb189a306787710b59fb93c7ae661.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/fcfbb189a306787710b59fb93c7ae661.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
 <h3 id="4、-保存后配置完成"><a href="#4、-保存后配置完成" class="headerlink" title="4、 保存后配置完成"></a>4、 保存后配置完成</h3><p>点击保存后，如果打开了maven项目，idea的右下角会有下面的加载条，等待jar下载完成即可</p>
-<p><img src="https://static.equinox19.xyz/articles/e555b8685943dcdc4c660a62a4603aba.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
-<p><img src="https://static.equinox19.xyz/articles/9e00c423ee816e62d5462c2203a2c56d.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/e555b8685943dcdc4c660a62a4603aba.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
+<p><img src="https://static.equinox19.xyz/articles/9e00c423ee816e62d5462c2203a2c56d.png" srcset="/codesand/img/loading.gif" lazyload alt="图片.png"></p>
 
                 
               </div>
@@ -337,7 +337,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B/" class="category-chain-item">运行教程</a>
+  <a href="/codesand/categories/%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B/" class="category-chain-item">运行教程</a>
   
   
 
@@ -352,9 +352,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B/">#运行教程</a>
+        <a href="/codesand/tags/springBoot/">#springBoot</a>
       
-        <a href="/tags/springBoot/">#springBoot</a>
+        <a href="/codesand/tags/%E8%BF%90%E8%A1%8C%E6%95%99%E7%A8%8B/">#运行教程</a>
       
     </div>
   
@@ -367,7 +367,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Maven环境搭建（idea）</div>
-      <div>https://toushang6015.github.io/codesand/2023/04/12/course/maven/</div>
+      <div>https://www.codesand.fun/2023/04/12/course/maven/</div>
     </div>
     <div class="license-meta">
       
@@ -417,7 +417,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/13/course/tomcat/" title="idea ssm/ssh项目配置Tomcat（极其详细）">
+                      <a href="/codesand/2023/04/13/course/tomcat/" title="idea ssm/ssh项目配置Tomcat（极其详细）">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">idea ssm/ssh项目配置Tomcat（极其详细）</span>
                         <span class="visible-mobile">上一篇</span>
@@ -575,15 +575,15 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="/codesand/js/events.js" ></script>
+<script  src="/codesand/js/plugins.js" ></script>
 
 
 
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="/codesand/js/img-lazyload.js" ></script>
   
 
 
@@ -682,7 +682,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="/codesand/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -692,7 +692,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="/codesand/js/boot.js" ></script>
 
 
   
