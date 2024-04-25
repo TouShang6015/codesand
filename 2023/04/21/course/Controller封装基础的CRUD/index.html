@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assert/img/icon/logo.png">
+  <link rel="icon" href="/assert/img/icon/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="吴昊">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="背景工作过部分软件开发公司，大部分软件的开发步骤都是框架搭建后，配置代码生成器生成出controller、service、mapper，虽然大部分开源框架service与mapper都生成好了，但是controller中还遗留冗余代码，我的想法是能不能把基本的单表CRUD抽出来，提供一个公共的Controller控制器。利用java语言的特性可以实现，也会存在一些问题。 实现思路 创建父控制器Ba">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Controller封装基础的CRUD，简化单表业务">
+<meta property="og:url" content="https://www.codersand.fun/2023/04/21/course/Controller%E5%B0%81%E8%A3%85%E5%9F%BA%E7%A1%80%E7%9A%84CRUD/index.html">
+<meta property="og:site_name" content="Code Sand 小站">
+<meta property="og:description" content="背景工作过部分软件开发公司，大部分软件的开发步骤都是框架搭建后，配置代码生成器生成出controller、service、mapper，虽然大部分开源框架service与mapper都生成好了，但是controller中还遗留冗余代码，我的想法是能不能把基本的单表CRUD抽出来，提供一个公共的Controller控制器。利用java语言的特性可以实现，也会存在一些问题。 实现思路 创建父控制器Ba">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://static.hootin19.fun/articles/4c94350d14a73475e50e06a2a86818cf.jpeg">
+<meta property="article:published_time" content="2023-04-21T08:06:40.000Z">
+<meta property="article:modified_time" content="2024-04-25T17:18:33.962Z">
+<meta property="article:author" content="吴昊">
+<meta property="article:tag" content="编程技巧">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://static.hootin19.fun/articles/4c94350d14a73475e50e06a2a86818cf.jpeg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Controller封装基础的CRUD，简化单表业务 - Code Sand 小站</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"www.codersand.fun","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false,"scope":["home"]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Code丶Sand</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('http://static.hootin19.fun/articles/4c94350d14a73475e50e06a2a86818cf.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">Controller封装基础的CRUD，简化单表业务</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-21 16:06" pubdate>
+          2023年4月21日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          37 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Controller封装基础的CRUD，简化单表业务</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>工作过部分软件开发公司，大部分软件的开发步骤都是框架搭建后，配置代码生成器生成出controller、service、mapper，虽然大部分开源框架service与mapper都生成好了，但是controller中还遗留冗余代码，我的想法是能不能把基本的单表CRUD抽出来，提供一个公共的Controller控制器。<br>利用java语言的特性可以实现，也会存在一些问题。</p>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><ul>
+<li>创建父控制器BaseController</li>
+<li>一个Model（表实体Model）对应一个service，service作为泛型为BaseController的属性</li>
+<li>通过注入的方式注入service属性（表不可能重复，因此service不存在重复注入Spring容器）</li>
+<li>提取增删改查Mapping</li>
+</ul>
+<p><strong>service接口需要提供通用增删改查接口，对持久层框架没有限制</strong></p>
+<h2 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h2><p>我是用的是mybatis-plus框架，service泛型需要继承自<code>IService</code>接口，这个接口是MybatisPlus提供的公共service层接口，基本的增删改查方法接口已经提供好了，需要传递一个<code>Model</code>泛型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BaseController</span>&lt;S <span class="hljs-keyword">extends</span> <span class="hljs-title class_">IService</span>&lt;M&gt;, M&gt; &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">protected</span> S service;<br>	<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>接着提取出公共的增删改查Mapping</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BaseController</span>&lt;S <span class="hljs-keyword">extends</span> <span class="hljs-title class_">IService</span>&lt;M&gt;, M&gt; &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">protected</span> S service;<br><br>    <span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-meta">@GetMapping(&quot;/baseQueryById/&#123;id&#125;&quot;)</span><br>    <span class="hljs-meta">@ApiOperation(value = &quot;基础功能-通过ID查询单条记录&quot;, notes = &quot;基础功能-通过ID查询单条记录&quot;, httpMethod = &quot;GET&quot;, response = Result.class)</span><br>    <span class="hljs-meta">@ApiOperationSupport(order = 1)</span><br>    <span class="hljs-keyword">protected</span> Result <span class="hljs-title function_">baseQueryById</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Long id)</span> &#123;<br>        <span class="hljs-keyword">if</span> (ObjectUtil.isNull(id) || id &lt;= <span class="hljs-number">0L</span>) &#123;<br>            <span class="hljs-keyword">return</span> Result.fail(<span class="hljs-string">&quot;id不能为空！&quot;</span>);<br>        &#125;<br>        <span class="hljs-type">M</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> service.getById(id);<br>        <span class="hljs-keyword">return</span> Result.success(m);<br>    &#125;<br><br>    <span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-meta">@PostMapping(&quot;/baseQueryByParam&quot;)</span><br>    <span class="hljs-meta">@ApiOperation(value = &quot;基础功能-条件查询&quot;, httpMethod = &quot;POST&quot;, response = Result.class)</span><br>    <span class="hljs-meta">@ApiOperationSupport(order = 2)</span><br>    <span class="hljs-keyword">protected</span> Result <span class="hljs-title function_">baseQueryByParam</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody(required = false)</span> M param)</span> &#123;<br>        <span class="hljs-keyword">if</span> (ObjectUtil.isNull(param)) &#123;<br>            param = service.modelInstance();<br>        &#125;<br>        List&lt;M&gt; list = service.listByParam(param);<br>        <span class="hljs-keyword">return</span> Result.success(list);<br>    &#125;<br><br>    <span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-meta">@PostMapping(&quot;/baseQueryPageByParam&quot;)</span><br>    <span class="hljs-meta">@ApiOperation(value = &quot;基础功能-条件查询分页&quot;, httpMethod = &quot;POST&quot;, response = Result.class)</span><br>    <span class="hljs-meta">@ApiOperationSupport(order = 3)</span><br>    <span class="hljs-keyword">protected</span> Result <span class="hljs-title function_">baseQueryPageByParam</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody(required = false)</span> M param)</span> &#123;<br>        <span class="hljs-keyword">if</span> (ObjectUtil.isNull(param)) &#123;<br>            param = service.modelInstance();<br>        &#125;<br>        IPage&lt;M&gt; page = PageUtil.pageBean(param);<br>        <span class="hljs-keyword">return</span> Result.success(service.listPageByParam(page, param));<br>    &#125;<br><br>    <span class="hljs-meta">@Log(title = &quot;基础新增&quot;)</span><br>    <span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-meta">@PostMapping(&quot;/baseAdd&quot;)</span><br>    <span class="hljs-meta">@ApiOperation(value = &quot;基础功能-新增&quot;, httpMethod = &quot;POST&quot;, response = Result.class)</span><br>    <span class="hljs-meta">@ApiOperationSupport(order = 4)</span><br>    <span class="hljs-keyword">protected</span> &lt;DTO&gt; Result <span class="hljs-title function_">baseAdd</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> DTO m)</span> &#123;<br>        <span class="hljs-type">M</span> <span class="hljs-variable">param</span> <span class="hljs-operator">=</span> JSON.parseObject(JSON.toJSONString(m), service.getModelClass());<br>        <span class="hljs-keyword">if</span> (!service.save(param)) &#123;<br>            <span class="hljs-keyword">return</span> Result.fail(ResultEnum.FAIL_INSERT);<br>        &#125;<br>        <span class="hljs-keyword">return</span> Result.success(ResultEnum.SUCCESS_INSERT);<br>    &#125;<br><br>    <span class="hljs-meta">@Log(title = &quot;基础编辑&quot;)</span><br>    <span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-meta">@PutMapping(&quot;/baseEdit&quot;)</span><br>    <span class="hljs-meta">@ApiOperation(value = &quot;基础功能-修改&quot;, httpMethod = &quot;PUT&quot;, response = Result.class)</span><br>    <span class="hljs-meta">@ApiOperationSupport(order = 5)</span><br>    <span class="hljs-keyword">protected</span> &lt;DTO&gt; Result <span class="hljs-title function_">baseEdit</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> <span class="hljs-meta">@Validated(value = &#123;Update.class&#125;)</span> DTO m)</span> &#123;<br>        <span class="hljs-type">M</span> <span class="hljs-variable">param</span> <span class="hljs-operator">=</span> JSON.parseObject(JSON.toJSONString(m), service.getModelClass());<br>        <span class="hljs-keyword">if</span> (!service.updateById(param)) &#123;<br>            <span class="hljs-keyword">return</span> Result.fail(ResultEnum.FAIL_UPDATE);<br>        &#125;<br>        <span class="hljs-keyword">return</span> Result.success(ResultEnum.SUCCESS_UPDATE);<br>    &#125;<br><br>    <span class="hljs-meta">@Log(title = &quot;基础删除&quot;)</span><br>    <span class="hljs-meta">@ResponseBody</span><br>    <span class="hljs-meta">@DeleteMapping(&quot;/baseDeleteByIds/&#123;ids&#125;&quot;)</span><br>    <span class="hljs-meta">@ApiOperation(value = &quot;基础功能-根据主键id删除(多个id根据,分隔)&quot;, httpMethod = &quot;DELETE&quot;, response = Result.class)</span><br>    <span class="hljs-meta">@ApiOperationSupport(order = 6)</span><br>    <span class="hljs-keyword">protected</span> Result <span class="hljs-title function_">baseDeleteByIds</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;ids&quot;)</span> String ids)</span> &#123;<br>        <span class="hljs-keyword">if</span> (StrUtil.isEmpty(ids)) &#123;<br>            <span class="hljs-keyword">return</span> Result.fail(<span class="hljs-string">&quot;删除条件id不能为空&quot;</span>);<br>        &#125;<br>        String[] idsArr = ids.split(StringPool.COMMA);<br>        <span class="hljs-keyword">if</span> (idsArr.length &gt; <span class="hljs-number">1000</span>) &#123;<br>            <span class="hljs-keyword">return</span> Result.fail(<span class="hljs-string">&quot;不能批量删除超过1000个数据&quot;</span>);<br>        &#125;<br>        List&lt;Long&gt; idList = StringUtils.splitToList(ids, Long::valueOf);<br>        <span class="hljs-keyword">if</span> (service.removeByIds(idList)) &#123;<br>            <span class="hljs-keyword">return</span> Result.success(ResultEnum.SUCCESS_DELETE);<br>        &#125;<br>        <span class="hljs-keyword">return</span> Result.success(ResultEnum.FAIL_DELETE);<br>    &#125;<br>	<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>其中<code>Result</code>为公共的返回实体，<code>Log</code>是我在项目中封装的日志注解，还用到了SwaggerUi接口文档框架</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>1、引入swaggerUi后，接口文档的请求参数不能友好的定制化设置，如下图</p>
+<p><img src="http://static.hootin19.fun/articles/01dd3b5c7477290d6e593a3982f95f09.png" srcset="/img/loading.gif" lazyload alt="图片.png"></p>
+<blockquote>
+<p>参数因为是泛型，不好定制化处理，必须重写BaseController的方法，然后重新再方法中添加swaggerUI注解</p>
+</blockquote>
+<p>2、如果需要扩展参数进行crud，必须重写父类BaseController中的方法，并且如果是扩展类型（DTO,VO）需要进行一次转换，不过这种转换的效率应该可以忽略不计</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 项目中的代码片段</span><br><span class="hljs-meta">@Log(title = &quot;字典类型新增&quot;)</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">protected</span> &lt;DTO&gt; Result <span class="hljs-title function_">baseAdd</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> DTO m)</span> &#123;<br>    <span class="hljs-type">BaseDictTypeModel</span> <span class="hljs-variable">param</span> <span class="hljs-operator">=</span> MapperUtil.convert(m, BaseDictTypeModel.class);<br>    <span class="hljs-keyword">return</span> Result.successBoolean(service.insertByParam(param));<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>重写注意要添加@RequestBody注解</p>
+<blockquote>
+<p>总结</p>
+</blockquote>
+<p>实际开发过程中并没有想象中的那么简化代码，但是提供了一个规则，使代码编写思路变的清晰，也减少了单表业务的代码量</p>
+<p><em>项目的源码地址：</em><br><a target="_blank" rel="noopener" href="https://gitee.com/toushang6015/spring-boot-bebas-server">gitee源码地址</a><br><a target="_blank" rel="noopener" href="https://github.com/TouShang6015/spring-boot-bebas-server">github源码地址</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9F%A5%E8%AF%86/" class="category-chain-item">编程知识</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">#编程技巧</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Controller封装基础的CRUD，简化单表业务</div>
+      <div>https://www.codersand.fun/2023/04/21/course/Controller封装基础的CRUD/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>吴昊</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                    <i class="iconfont icon-sa"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/23/course/Java%E4%BC%98%E9%9B%85%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%A0%91%E5%BD%A2%E8%8F%9C%E5%8D%95/" title="Java优雅的实现树形菜单、树形结构">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java优雅的实现树形菜单、树形结构</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/21/course/%E6%9E%9A%E4%B8%BEEnum%E7%9A%84%E8%BF%9B%E9%98%B6%E7%94%A8%E6%B3%95/" title="小Tips-枚举Enum的进阶用法">
+                        <span class="hidden-mobile">小Tips-枚举Enum的进阶用法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://www.codersand.fun" target="_blank" rel="nofollow noopener"><span>Code Sand 小站</span></a> <i class="iconfont icon-love"></i> <a href="https://www.equinox19.xyz" target="_blank" rel="nofollow noopener"><span>Equinox Blog博客</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid 主题</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
